@@ -137,4 +137,10 @@ func main() {
 	//nums2 := [2][2]int{{1, 2}, {3, 4}}
 	//fmt.Println(nums2)
 
+	/*
+		->fixed size
+		->memory optimization
+		->constant time access
+	*/
+
 }
