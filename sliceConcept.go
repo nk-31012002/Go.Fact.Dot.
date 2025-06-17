@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 	slices -> dynamic array
@@ -36,4 +38,32 @@ func main() {
 	//var nums2 = make([]int, len(nums))
 	//copy(nums2, nums)
 	//fmt.Println(nums2)
+
+	//slice operator
+
+	//var sample = make([]int, 5)
+	//for i := 0; i < len(sample); i++ {
+	//	sample[i] = i
+	//}
+	//
+	//fmt.Println(sample)
+	//fmt.Println(sample[1:2])
+	//fmt.Println(sample[:2])
+	//fmt.Println(sample[2:])
+
+	//slices package
+
+	//var nums1 = make([]int, 5)
+	//var nums2 = make([]int, 5)
+	//
+	//for i := 0; i < len(nums1); i++ {
+	//	nums1[i] = i
+	//	nums2[i] = i
+	//}
+	//fmt.Println(nums1, nums2)
+	//
+	//fmt.Println(slices.Equal(nums1, nums2))
+
+	//same like in array, we can define 2d slices as well just add [][]
+
 }
