@@ -109,15 +109,32 @@ func main() {
 		ans("string")
 	*/
 
-	var arr [4]int
-
-	fmt.Println("Length =", len(arr))
+	//var arr[4]int
+	//
+	//fmt.Println("Length =", len(arr))
 
 	//arr[0] = 1
 	//arr[1] = 2
 	//arr[2] = 3
 	//arr[3] = 4
 	//arr[4] = 5
-	fmt.Println(arr)
+	//fmt.Println(arr)
+
+	//var b [4]bool
+	//fmt.Println(b)
+
+	//var c [4]string
+	//
+	//c[2] = "Hello"
+	//fmt.Println(c)
+
+	//assign value in declaration itself
+	//
+	//nums := [3]int{1, 2, 3}
+	//
+	//fmt.Println(nums)
+
+	//nums2 := [2][2]int{{1, 2}, {3, 4}}
+	//fmt.Println(nums2)
 
 }
