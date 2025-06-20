@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 /*
 
@@ -38,20 +36,32 @@ value := <-ch // receive value from the channel
 //	}
 //}
 
-func sum(result chan int, num1 int, num2 int) {
-	ans := num1 + num2
-	result <- ans
+//func sum(result chan int, num1 int, num2 int) {
+//	ans := num1 + num2
+//	result <- ans
+//}
+
+func task(done chan bool) {
+
+	defer func() { done <- true }()
+
+	fmt.Println("Processing.....")
 }
 
 func main() {
 
-	numChan := make(chan int)
+	done := make(chan bool)
+	go task(done)
 
-	go sum(numChan, 1, 23)
+	<-done
 
-	res := <-numChan //blocking
-
-	fmt.Println(res)
+	//numChan := make(chan int)
+	//
+	//go sum(numChan, 1, 23)
+	//
+	//res := <-numChan //blocking
+	//
+	//fmt.Println(res)
 	//
 	//go processNum(numChan)
 	//
