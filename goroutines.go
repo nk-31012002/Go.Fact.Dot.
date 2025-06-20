@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"sync"
 )
 
 /*
@@ -24,23 +24,29 @@ important --> so in go, if we use goroutines then it not run like traditional fu
 
 */
 
-func solve1(t int) {
+func solve1(t int, w *sync.WaitGroup) {
+	defer w.Done()
 	fmt.Println("Goroutines", t)
 }
 
 func main() {
 	fmt.Println("Go Starts")
 
+	var wg sync.WaitGroup
+
 	for i := 0; i < 10; i++ {
 		//solve1(i) // ---> what this will do, this will print each line sequentially ---> like first, then second and so on
-		//go solve1(i)
+		wg.Add(1)
+		go solve1(i, &wg)
 
-		go func(i int) {
-			fmt.Println("Goroutines", i)
-		}(i)
+		//go func(i int) {
+		//	fmt.Println("Goroutines", i)
+		//}(i)
 
 	}
 
-	time.Sleep(time.Second)
+	wg.Wait()
+
+	//time.Sleep(time.Second)
 	fmt.Println("Go Ends")
 }
