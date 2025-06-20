@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 
@@ -29,20 +31,38 @@ value := <-ch // receive value from the channel
 //	ch <- 10
 //}
 
+//func processNum(numChan chan int) {
+//	for num := range numChan {
+//		fmt.Println("Processing number", num)
+//		time.Sleep(time.Second)
+//	}
+//}
+
+func sum(result chan int, num1 int, num2 int) {
+	ans := num1 + num2
+	result <- ans
+}
+
 func main() {
-	fmt.Println("Go Starts")
-	//ch := make(chan int)
-	//go sendData(ch)
-	//val := <-ch
-	//fmt.Println(val)
 
-	messageChannel := make(chan string)
+	numChan := make(chan int)
 
-	messageChannel <- "Hello World"
+	go sum(numChan, 1, 23)
 
-	msg := <-messageChannel
+	res := <-numChan //blocking
 
-	fmt.Println(msg)
+	fmt.Println(res)
+	//
+	//go processNum(numChan)
+	//
+	//for {
+	//	numChan <- rand.Intn(100)
+	//}
+	//messageChan := make(chan string)
+	//
+	//messageChan <- "Ping" //channels are blocking
+	//msg := <-messageChan
+	//
+	//fmt.Println(msg)
 
-	fmt.Println("Go Ends")
 }
