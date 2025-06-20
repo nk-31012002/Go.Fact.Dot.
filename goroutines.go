@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 /*
 
@@ -10,6 +13,14 @@ It lets you run a function at the same time as the rest of your program.
 Think of it like starting a new task without waiting for the previous one to finish.
 
 if i want to run things concurrently or want to use multithreading we use ---> goroutines.
+
+important --> so in go, if we use goroutines then it not run like traditional function. It first go to goroutine scheduler then from there it runs ->
+
+						1. The Go runtime schedules the function to run in the background, in a new goroutine.
+
+						2. The function runs concurrently, managed by the Go scheduler.
+
+						3. The actual execution may happen on the same OS thread, a different thread, or even a different CPU core — depending on runtime needs.
 
 */
 
@@ -21,8 +32,15 @@ func main() {
 	fmt.Println("Go Starts")
 
 	for i := 0; i < 10; i++ {
-		solve1(i) // ---> what this will do, this will print each line sequentially ---> like first, then second and so on
+		//solve1(i) // ---> what this will do, this will print each line sequentially ---> like first, then second and so on
+		//go solve1(i)
+
+		go func(i int) {
+			fmt.Println("Goroutines", i)
+		}(i)
+
 	}
 
+	time.Sleep(time.Second)
 	fmt.Println("Go Ends")
 }
