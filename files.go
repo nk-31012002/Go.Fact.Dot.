@@ -21,22 +21,27 @@ func main() {
 
 	//read file
 
-	f, err := os.Open("example.txt")
+	//f, err := os.Open("example.txt")
 
+	//if err != nil {
+	//	panic(err)
+	//}
+	//defer f.Close()
+	//
+	//buf := make([]byte, 10)
+	//d, err := f.Read(buf)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//for i := 0; i < len(buf); i++ {
+	//	println("data", d, string(buf[i]))
+	//}
+
+	data, err := os.ReadFile("example.txt")
 	if err != nil {
 		panic(err)
 	}
-	defer f.Close()
 
-	buf := make([]byte, 10)
-	d, err := f.Read(buf)
-	if err != nil {
-		panic(err)
-	}
-
-	for i := 0; i < len(buf); i++ {
-		println("data", d, string(buf[i]))
-	}
-
-	fmt.Println("data", d, buf)
+	fmt.Println(string(data))
 }
