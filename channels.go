@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /*
 
 Channels are a way for goroutines to communicate with each other and synchronize execution.
@@ -41,19 +39,19 @@ value := <-ch // receive value from the channel
 //	result <- ans
 //}
 
-func task(done chan bool) {
-
-	defer func() { done <- true }()
-
-	fmt.Println("Processing.....")
-}
+//func task(done chan bool) {
+//
+//	defer func() { done <- true }()
+//
+//	fmt.Println("Processing.....")
+//}
 
 func main() {
 
-	done := make(chan bool)
-	go task(done)
-
-	<-done
+	//done := make(chan bool)
+	//go task(done)
+	//
+	//<-done
 
 	//numChan := make(chan int)
 	//
