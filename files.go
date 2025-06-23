@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
+import "os"
 
 func main() {
 	//
@@ -43,18 +40,30 @@ func main() {
 	//	panic(err)
 	//}
 
-	//read folders
-	dir, err := os.Open(".")
+	////read folders
+	//dir, err := os.Open(".")
+	//
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//defer dir.Close()
+	//
+	//fileInfo, err := dir.ReadDir(-1)
+	//
+	//for _, fi := range fileInfo {
+	//	fmt.Println(fi.Name())
+	//}
 
+	//create a file
+	f, err := os.Create("example2.txt")
 	if err != nil {
 		panic(err)
 	}
+	defer f.Close()
+	//f.WriteString("Hello World")
+	//f.WriteString("Hello World2")
 
-	defer dir.Close()
-
-	fileInfo, err := dir.ReadDir(-1)
-
-	for _, fi := range fileInfo {
-		fmt.Println(fi.Name())
-	}
+	bytes := []byte("hello world")
+	f.Write(bytes)
 }
